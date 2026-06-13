@@ -346,15 +346,15 @@ metadata:
 spec:
   containers:
   - name: hello-container
-    image: busybox
+    image: 975050024946.dkr.ecr.ap-southeast-1.amazonaws.com/demo-backend:v1.4
     command: ['sh', '-c', 'echo Hello from Kubernetes! && sleep 3600']
     resources:
       requests:
         memory: "64Mi"
         cpu: "100m"
       limits:
-        memory: "128Mi"
-        cpu: "250m"
+        memory: "256Mi" # if the container requires more memory then it will fail because of OOM error 
+        cpu: "250m" # if the container requires more CPU then the apps throttles meaning it is run very slow and kind of in hanged state
 ```
 
 **Let's break down the YAML - the A-K-M-S pattern:**
